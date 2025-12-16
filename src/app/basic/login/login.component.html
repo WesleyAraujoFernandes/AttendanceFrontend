@@ -1,6 +1,11 @@
 <div class="center-form">
   <h2>Enter Your Credentials</h2>
-  <form nz-form class="custom-form" [formGroup]="loginForm">
+  <form
+    nz-form
+    class="custom-form"
+    [formGroup]="loginForm"
+    (ngSubmit)="submitForm()"
+  >
     <nz-form-item>
       <nz-form-control nzErrorTip="Please input your email">
         <nz-input-group nzPrefixIcon="user">
