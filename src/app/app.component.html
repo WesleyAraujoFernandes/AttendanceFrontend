@@ -1,5 +1,9 @@
 <nz-layout>
-  <nz-sider nzCollapsible nzWidth="200px">
+  <nz-sider
+    nzCollapsible
+    nzWidth="200px"
+    *ngIf="!isAdminLoggedIn && !isEmployeeLoggedIn && !isManagerLoggedIn"
+  >
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item routerLink="/">
@@ -8,7 +12,7 @@
       </li>
     </ul>
   </nz-sider>
-  <nz-sider nzCollapsible nzWidth="200px">
+  <nz-sider nzCollapsible nzWidth="200px" *ngIf="isAdminLoggedIn">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item routerLink="/admin/dashboard">
@@ -37,7 +41,7 @@
       </li>
     </ul>
   </nz-sider>
-  <nz-sider nzCollapsible nzWidth="200px">
+  <nz-sider nzCollapsible nzWidth="200px" *ngIf="isEmployeeLoggedIn">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item routerLink="/employee/dashboard">
@@ -50,7 +54,7 @@
       </li>
     </ul>
   </nz-sider>
-  <nz-sider nzCollapsible nzWidth="200px">
+  <nz-sider nzCollapsible nzWidth="200px" *ngIf="isManagerLoggedIn">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item routerLink="/manager/dashboard">
