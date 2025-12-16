@@ -1,0 +1,38 @@
+<div class="center-form">
+  <h2>Enter Your Credentials</h2>
+  <form nz-form class="custom-form" [formGroup]="loginForm">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your email">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            type="text"
+            nz-input
+            formControlName="email"
+            placeholder="Enter email"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your password">
+        <nz-input-group nzPrefixIcon="lock">
+          <input
+            type="password"
+            nz-input
+            formControlName="password"
+            placeholder="Enter password"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <button
+      nz-button
+      nzType="primary"
+      nzBlock
+      class="w-100"
+      [disabled]="loginForm.invalid"
+    >
+      Login
+    </button>
+  </form>
+</div>
