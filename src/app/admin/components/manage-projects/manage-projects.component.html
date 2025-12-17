@@ -1,0 +1,50 @@
+<div style="margin-top: 10px">
+  <div nz-row>
+    <div nz-col nzFlex="2">
+      <nz-card
+        nzTitle="inner"
+        style="margin-top: 16px"
+        nzTitle="Post New Project"
+      >
+        <form nz-form [formGroup]="projectForm" (ngSubmit)="submitForm()">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input the name!">
+              <input
+                type="text"
+                nz-input
+                formControlName="name"
+                placeholder="Enter the name of project"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input the duration!">
+              <input
+                type="text"
+                nz-input
+                formControlName="duration"
+                placeholder="Enter the duration of project"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input the description!">
+              <nz-date-picker style="width: 100%" formControlName="startDate">
+              </nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+          <button
+            nz-button
+            nzType="primary"
+            nzBlock
+            class="w-100"
+            [disabled]="projectForm.invalid"
+          >
+            Add New Project
+          </button>
+        </form>
+      </nz-card>
+    </div>
+    <div nz-col nzFlex="3" style="margin-left: 20px"></div>
+  </div>
+</div>

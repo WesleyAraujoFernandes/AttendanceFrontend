@@ -10,6 +10,8 @@ import { UserStorageService } from './basic/basic-services/user-storage.service'
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  USER = 'att_user';
+
   title = 'AttendanceFrontend';
   isEmployeeLoggedIn: boolean = UserStorageService.isEmployeeLoggedIn();
   isAdminLoggedIn: boolean = UserStorageService.isAdminLoggedIn();
@@ -23,5 +25,9 @@ export class AppComponent {
       this.isAdminLoggedIn = UserStorageService.isAdminLoggedIn();
       this.isManagerLoggedIn = UserStorageService.isManagerLoggedIn();
     });
+  }
+
+  ngOnDestroy() {
+    window.localStorage.removeItem(this.USER);
   }
 }
