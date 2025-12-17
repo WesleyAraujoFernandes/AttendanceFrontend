@@ -14,4 +14,8 @@ export class AdminService {
     return this.http.post(`${url}/api/projects/add`, project);
     //return this.http.post(url + '/api/projects/add', project);
   }
+
+  getProjects(): Observable<any> {
+    return this.http.get(`${url}/api/projects/all`);
+  }
 }

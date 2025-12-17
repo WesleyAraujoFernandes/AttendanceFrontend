@@ -2,7 +2,7 @@
   <div nz-row>
     <div nz-col nzFlex="2">
       <nz-card
-        nzTitle="inner"
+        nzType="inner"
         style="margin-top: 16px"
         nzTitle="Post New Project"
       >
@@ -45,6 +45,17 @@
         </form>
       </nz-card>
     </div>
-    <div nz-col nzFlex="3" style="margin-left: 20px"></div>
+    <div nz-col nzFlex="3" style="margin-left: 20px">
+      <nz-card nzType="inner" style="margin-top: 16px" nzTitle="All Projects">
+        <div nz-card-grid style="width: 100%" *ngFor="let project of projects">
+          <div nz-col nzSpan="30">
+            ID: <strong>{{ project.id }}</strong> - Name:
+            <strong>{{ project.name }}</strong> - Duration:
+            <strong>{{ project.duration }}</strong> - Start Date:
+            <strong>{{ project.startDate | date }}</strong>
+          </div>
+        </div>
+      </nz-card>
+    </div>
   </div>
 </div>

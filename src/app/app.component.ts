@@ -27,7 +27,8 @@ export class AppComponent {
     });
   }
 
-  ngOnDestroy() {
-    window.localStorage.removeItem(this.USER);
+  logout() {
+    UserStorageService.signOut();
+    this.router.navigateByUrl('/');
   }
 }

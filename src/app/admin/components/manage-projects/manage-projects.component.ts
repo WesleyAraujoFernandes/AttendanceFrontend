@@ -19,12 +19,15 @@ export class ManageProjectsComponent {
     private message: NzMessageService
   ) {}
 
+  projects: any;
+
   ngOnInit() {
     this.projectForm = this.fb.group({
       name: [null, [Validators.required]],
       duration: [null, [Validators.required]],
       startDate: [null, [Validators.required]],
     });
+    this.getAllProjects();
   }
 
   submitForm() {
@@ -34,9 +37,22 @@ export class ManageProjectsComponent {
           nzDuration: 5000,
         });
         this.projectForm.reset();
+        this.getAllProjects();
       },
       (error) => {
         this.message.error('Failed to add project', { nzDuration: 5000 });
+      }
+    );
+  }
+
+  getAllProjects() {
+    this.adminService.getProjects().subscribe(
+      (res) => {
+        this.projects = res;
+        console.log(this.projects);
+      },
+      (error) => {
+        this.message.error('Failed to fetch projects', { nzDuration: 5000 });
       }
     );
   }
