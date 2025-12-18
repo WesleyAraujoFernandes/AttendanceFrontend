@@ -1,0 +1,70 @@
+<div style="margin-top: 10px">
+  <div nz-row>
+    <div nz-col nzFlex="2">
+      <nz-card
+        nzTitle="inner"
+        style="margin-top: 16px"
+        nzTitle="Post New Manager"
+      >
+        <form nz-form [formGroup]="managerForm">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input manager name!">
+              <input
+                type="text"
+                nz-input
+                formControlName="name"
+                placeholder="Enter the name"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input manager email!">
+              <input
+                type="email"
+                nz-input
+                formControlName="email"
+                placeholder="Enter the email"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your password">
+              <input
+                type="password"
+                nz-input
+                formControlName="password"
+                placeholder="Enter the password"
+              />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input the project!">
+              <nz-select
+                nzAllowClear
+                nzPlaceHolder="Select the project"
+                formControlName="projectId"
+              >
+                <nz-option
+                  *ngFor="let project of projects"
+                  [nzLabel]="project.name"
+                  [nzValue]="project.id"
+                >
+                </nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+          <button
+            nz-button
+            nzType="primary"
+            nzBlock
+            class="w-100"
+            [disabled]="managerForm.invalid"
+          >
+            Add New Manager
+          </button>
+        </form>
+      </nz-card>
+    </div>
+    <div nz-col nzFlex="3" style="margin-left: 20px"></div>
+  </div>
+</div>
