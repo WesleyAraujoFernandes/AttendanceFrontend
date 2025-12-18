@@ -40,4 +40,20 @@ export class ManageManagersComponent {
       }
     );
   }
+
+  submitForm() {
+    const data = this.managerForm.value;
+    data.userRole = 'MANAGER';
+    this.AdminService.addUser(data).subscribe(
+      (res) => {
+        this.message.success('Manager created successfully', {
+          nzDuration: 5000,
+        });
+        this.managerForm.reset();
+      },
+      (error) => {
+        this.message.error(error.error, { nzDuration: 5000 });
+      }
+    );
+  }
 }
