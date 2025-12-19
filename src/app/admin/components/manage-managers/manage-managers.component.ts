@@ -13,6 +13,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class ManageManagersComponent {
   projects: any;
   managerForm!: FormGroup;
+  managers!: any;
+
   constructor(
     private AdminService: AdminService,
     private fb: FormBuilder,
@@ -27,6 +29,7 @@ export class ManageManagersComponent {
       password: [null, [Validators.required, Validators.minLength(4)]],
     });
     this.getAllProjects();
+    this.getAllManagers();
   }
 
   getAllProjects() {
@@ -53,6 +56,18 @@ export class ManageManagersComponent {
       },
       (error) => {
         this.message.error(error.error, { nzDuration: 5000 });
+      }
+    );
+  }
+
+  getAllManagers() {
+    this.AdminService.getAllManagers().subscribe(
+      (res) => {
+        this.managers = res;
+        console.log(this.managers);
+      },
+      (error) => {
+        console.log('Failed to fetch managers');
       }
     );
   }

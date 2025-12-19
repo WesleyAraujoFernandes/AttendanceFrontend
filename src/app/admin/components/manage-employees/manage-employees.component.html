@@ -4,9 +4,9 @@
       <nz-card
         nzTitle="inner"
         style="margin-top: 16px"
-        nzTitle="Post New Manager"
+        nzTitle="Post New Employee"
       >
-        <form nz-form [formGroup]="managerForm" (ngSubmit)="submitForm()">
+        <form nz-form [formGroup]="employeeForm">
           <nz-form-item>
             <nz-form-control nzErrorTip="Please input manager name!">
               <input
@@ -58,24 +58,30 @@
             nzType="primary"
             nzBlock
             class="w-100"
-            [disabled]="managerForm.invalid"
+            [disabled]="employeeForm.invalid"
           >
-            Add New Manager
+            Add New Employee
           </button>
         </form>
       </nz-card>
     </div>
     <div nz-col nzFlex="3" style="margin-left: 20px">
-      <nz-card nzTitle="inner" style="margin-top: 16px" nzTitle="All Managers">
-        <div nz-card-grid style="width: 100%" *ngFor="let manager of managers">
+      <!--
+      <nz-card nzTitle="inner" style="margin-top: 16px" nzTitle="All Employee">
+        <div
+          nz-card-grid
+          style="width: 100%"
+          *ngFor="let employee of employees"
+        >
           <div nz-col-nzSpan="30">
-            ID: <strong>{{ manager.id }}</strong> - Name:
-            <strong>{{ manager.name }}</strong> - Email:
-            <strong>{{ manager.email }}</strong> - Project:
-            <strong>{{ manager.projectName }}</strong>
+            ID: <strong>{{ employee.id }}</strong> - Name:
+            <strong>{{ employee.name }}</strong> - Email:
+            <strong>{{ employee.email }}</strong> - Project:
+            <strong>{{ employee.projectName }}</strong>
           </div>
         </div>
       </nz-card>
+      -->
     </div>
   </div>
 </div>
