@@ -6,7 +6,7 @@
         style="margin-top: 16px"
         nzTitle="Post New Employee"
       >
-        <form nz-form [formGroup]="employeeForm">
+        <form nz-form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
           <nz-form-item>
             <nz-form-control nzErrorTip="Please input manager name!">
               <input

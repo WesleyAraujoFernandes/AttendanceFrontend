@@ -14,7 +14,11 @@ export class ManageEmployeesComponent {
   employeeForm!: FormGroup;
   projects: any;
 
-  constructor(private adminService: AdminService, private fb: FormBuilder) {}
+  constructor(
+    private adminService: AdminService,
+    private fb: FormBuilder,
+    private message: NzMessageService
+  ) {}
 
   ngOnInit() {
     this.employeeForm = this.fb.group({
@@ -34,6 +38,22 @@ export class ManageEmployeesComponent {
       },
       (error) => {
         console.log('Failed to fetch projects');
+      }
+    );
+  }
+
+  submitForm() {
+    const data = this.employeeForm.value;
+    data.userRole = 'EMPLOYEE';
+    this.adminService.addUser(data).subscribe(
+      (res) => {
+        this.message.success('Employee created successfully', {
+          nzDuration: 5000,
+        });
+        this.employeeForm.reset();
+      },
+      (error) => {
+        this.message.error(error.error, { nzDuration: 5000 });
       }
     );
   }
