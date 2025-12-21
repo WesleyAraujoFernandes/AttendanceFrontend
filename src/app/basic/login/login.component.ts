@@ -33,10 +33,13 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(this.loginForm.value).subscribe(
       (res) => {
         UserStorageService.saveUser(res);
-        if (UserStorageService.isAdminLoggedIn) {
+        if (UserStorageService.isAdminLoggedIn()) {
           this.router.navigateByUrl('/admin/dashboard');
+        } else if (UserStorageService.isEmployeeLoggedIn()) {
+          this.router.navigateByUrl('/employee/dashboard');
+        } else if (UserStorageService.isManagerLoggedIn()) {
+          this.router.navigateByUrl('/manager/dashboard');
         }
-        console.log(res);
       },
       (error) => {
         this.message.error(`Bad credentials`, { nzDuration: 5000 });
