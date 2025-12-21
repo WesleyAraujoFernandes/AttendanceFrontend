@@ -13,6 +13,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class ManageEmployeesComponent {
   employeeForm!: FormGroup;
   projects: any;
+  employees: any;
 
   constructor(
     private adminService: AdminService,
@@ -28,6 +29,7 @@ export class ManageEmployeesComponent {
       password: [null, [Validators.required]],
     });
     this.getAllProjects();
+    this.getAllEmployees();
   }
 
   getAllProjects() {
@@ -51,9 +53,22 @@ export class ManageEmployeesComponent {
           nzDuration: 5000,
         });
         this.employeeForm.reset();
+        this.getAllEmployees();
       },
       (error) => {
         this.message.error(error.error, { nzDuration: 5000 });
+      }
+    );
+  }
+
+  getAllEmployees() {
+    this.adminService.getAllEmployees().subscribe(
+      (res) => {
+        this.employees = res;
+        console.log(this.employees);
+      },
+      (error) => {
+        console.log('Failed to fetch employees');
       }
     );
   }
